@@ -13,11 +13,7 @@ import java.util.Date;
 @Setter
 @Builder
 @AllArgsConstructor
-public class Course {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Course extends BaseEntity {
 
     @Column(name = "title")
     private String title;
@@ -33,16 +29,4 @@ public class Course {
 
     @Column(name = "price")
     private BigDecimal price;
-
-    @Column(name = "created_at")
-    private Date createdAt;
-
-    @Column(name = "created_by")
-    private String createdBy;
-
-    @Column(name = "updated_at")
-    private Date updatedAt;
-
-    @Column(name = "updated_by")
-    private String updatedBy;
 }

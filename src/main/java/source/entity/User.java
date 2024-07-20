@@ -11,11 +11,7 @@ import java.util.Date;
 @Setter
 @Builder
 @AllArgsConstructor
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class User extends BaseEntity {
 
     @Column(name = "user_name")
     private String username;
@@ -25,16 +21,4 @@ public class User {
 
     @Column(name = "status")
     private Integer status; // ACTIVE/INACTIVE/BLOCKED
-
-    @Column(name = "created_at")
-    private Date createdAt;
-
-    @Column(name = "created_by")
-    private String createdBy;
-
-    @Column(name = "updated_at")
-    private Date updatedAt;
-
-    @Column(name = "updated_by")
-    private String updatedBy;
 }
