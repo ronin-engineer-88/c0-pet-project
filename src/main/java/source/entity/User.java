@@ -3,6 +3,7 @@ package source.entity;
 import lombok.*;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -21,4 +22,7 @@ public class User extends BaseEntity {
 
     @Column(name = "status")
     private Integer status; // ACTIVE/INACTIVE/BLOCKED
+
+    @OneToMany(mappedBy = "user")
+    private Set<UserCourse> userCourses;
 }

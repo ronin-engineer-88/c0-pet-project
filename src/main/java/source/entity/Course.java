@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "course")
@@ -29,4 +30,7 @@ public class Course extends BaseEntity {
 
     @Column(name = "price")
     private BigDecimal price;
+
+    @OneToMany(mappedBy = "course")
+    private Set<UserCourse> userCourses;
 }
