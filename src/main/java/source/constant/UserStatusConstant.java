@@ -18,7 +18,8 @@ public enum UserStatusConstant {
     private final int status;
     private final String name;
 
-    private static final Map<Integer, UserStatusConstant> mappingValue = new HashMap<>();
+    // static final Map<Integer, UserStatusConstant> mappingValue = new HashMap<>();
+    public static  Map<Integer, UserStatusConstant> mappingValue = new HashMap<>();
 
     static {
         for (UserStatusConstant status : UserStatusConstant.values()) {
