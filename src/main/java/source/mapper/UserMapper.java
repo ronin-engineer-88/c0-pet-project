@@ -4,6 +4,7 @@ package source.mapper;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
+import source.constant.UserStatusConstant;
 import source.dto.request.UserRequest;
 import source.dto.response.UserResponse;
 import source.entity.User;
@@ -19,7 +20,9 @@ public class UserMapper {
     }
 
     public UserResponse toResponse(User user) {
-        return modelMapper.map(user, UserResponse.class);
+        UserResponse userResponse = modelMapper.map(user, UserResponse.class);
+        userResponse.setStatus(UserStatusConstant.fromValue(user.getStatus()).toString());
+        return userResponse;
     }
 
 

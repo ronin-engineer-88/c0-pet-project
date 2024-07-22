@@ -1,8 +1,8 @@
 package source.entity;
 
+import jakarta.persistence.*;
 import lombok.*;
 
-import jakarta.persistence.*;
 
 @Entity
 @Table(name = "section_item")

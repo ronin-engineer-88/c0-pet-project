@@ -1,19 +1,19 @@
 package source.dto.request;
 
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.NotNull;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class UserRequest extends BasicRequest {
+public class UserRequest {
 
     @Length(min = 3, max = 20, message = "Username must be between 3 and 20 characters")
     private String username;

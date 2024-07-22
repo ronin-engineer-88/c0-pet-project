@@ -1,8 +1,8 @@
 package source.entity;
 
+import jakarta.persistence.*;
 import lombok.*;
 
-import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 

@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserResponse {
+public class UserResponse extends BaseResponse {
 
     private Long id;
 
@@ -17,6 +17,6 @@ public class UserResponse {
 
     private Integer age;
 
-    private Integer status;
+    private String status;
 
 }
