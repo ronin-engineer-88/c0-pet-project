@@ -2,9 +2,9 @@ package source.entity;
 
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
+
 import java.util.Set;
 
 @Entity

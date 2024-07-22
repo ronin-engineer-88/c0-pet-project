@@ -1,36 +1,22 @@
 package source.exception;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.springframework.http.HttpStatus;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import source.constant.ResponseCode;
 
-import java.io.Serializable;
 
-/**
- * Base Business Exception Class
- * When you create a new exception, it must extend this class.
- */
 @Getter
-public class BusinessException extends RuntimeException implements Serializable {
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class BusinessException extends RuntimeException {
 
-    private static final long serialVersionUID = 1905122041950251207L;
-    private final BusinessError error;
+    ResponseCode responseCode;
 
-    public BusinessException(int code, String message, HttpStatus status) {
-       super(message);
-       this.error = new BusinessError(code, message, status);
-    }
-    public BusinessException(BusinessError error) {
-        super(error.getMessage());
-        this.error = error;
-    }
-
-    public BusinessException(BusinessError error, String message) {
+    public BusinessException(ResponseCode responseCode, String message) {
         super(message);
-        this.error = error;
-    }
-
-    public BusinessException(BusinessError error, String message, Throwable cause) {
-        super(message, cause);
-        this.error = error;
+        this.responseCode = responseCode;
     }
 }

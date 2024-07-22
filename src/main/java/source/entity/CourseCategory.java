@@ -1,9 +1,7 @@
 package source.entity;
 
 import lombok.*;
-import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "course_category")

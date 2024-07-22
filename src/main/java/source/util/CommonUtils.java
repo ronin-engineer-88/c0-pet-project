@@ -12,7 +12,6 @@ import org.springframework.util.StringUtils;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Locale;
@@ -147,10 +146,6 @@ public class CommonUtils {
         Locale locale = new Locale.Builder().setLanguage("us").setRegion("US").build();
         String moneyFormat = NumberFormat.getNumberInstance(locale).format(money);
         return moneyFormat;
-    }
-
-    public static BigDecimal roundingCurrency(BigDecimal money) {
-        return money.setScale(0, RoundingMode.HALF_UP);
     }
 
     public static BigDecimal convertStringToBigDecimal(String value) {

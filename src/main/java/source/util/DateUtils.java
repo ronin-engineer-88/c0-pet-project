@@ -1,17 +1,12 @@
 package source.util;
 
-
-import org.springframework.format.annotation.DateTimeFormat;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 public class DateUtils {
 
@@ -274,19 +269,6 @@ public class DateUtils {
         return result;
     }
 
-    public static long getDurationDay(Date date1, Date date2) {
-        LocalDate localDate1 = date1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        LocalDate localDate2 = date2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        return Math.abs(ChronoUnit.DAYS.between(localDate1, localDate2));
-    }
-
-    public static long getDurationMonth(Date date1, Date date2) {
-        LocalDate localDate1 = date1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        LocalDate localDate2 = date2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        return Math.abs(ChronoUnit.MONTHS.between(localDate1, localDate2));
-    }
-
-
     public static Date minusDays(Date date, long days) {
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate localDateBefore = localDate.minusDays(days);
@@ -307,29 +289,6 @@ public class DateUtils {
 
     public static java.sql.Timestamp toTimeStamp(Date date) {
         return date == null ? null : new java.sql.Timestamp(date.getTime());
-    }
-
-    public static List<Date> getListDate(java.util.Date startDate, java.util.Date endDate) {
-        List<Date> dates = new ArrayList<>();
-        long index;
-        if (startDate != null) {
-            if (startDate.compareTo(endDate) == 0){
-                index = 1;
-                startDate = endDate;
-            }else {
-                index = DateUtils.getDurationDay(startDate, endDate);
-            }
-        } else {
-            index = 1;
-            startDate = endDate;
-        }
-
-        for (int i = 0; i <= index; i++) {
-            java.util.Date date = DateUtils.plusDays(startDate, i);
-            dates.add(date);
-        }
-
-        return dates;
     }
 
     public static boolean isFirstOfMonth(Date date) {
