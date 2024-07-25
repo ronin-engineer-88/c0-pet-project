@@ -1,10 +1,9 @@
-package source.util;
+package source.utils;
 
 
 import com.google.common.base.CaseFormat;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.BeanUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
@@ -169,20 +168,5 @@ public class CommonUtils {
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(input);
         return m.find();
-    }
-
-    public static String preventionSqlInjectionLike(String value) {
-        if (!Strings.isBlank(value)) {
-            return value.replace("_", "!_").replace("%", "!%");
-        } else {
-            return value;
-        }
-    }
-
-    public static String fulfillNumber(String pattern, String sequence) {
-        if (sequence.length() > pattern.length())
-            return sequence;
-        String fullID = pattern.substring(0, pattern.length() - sequence.length()) + sequence;
-        return fullID;
     }
 }

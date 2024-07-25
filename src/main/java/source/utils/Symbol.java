@@ -1,4 +1,4 @@
-package source.util;
+package source.utils;
 
 public class Symbol {
     public static final String BACK_SLASH = "\\";
