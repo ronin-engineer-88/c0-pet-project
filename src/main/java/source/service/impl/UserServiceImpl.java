@@ -3,11 +3,11 @@ package source.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import source.constant.ResponseCode;
 import source.constant.UserStatusConstant;
-import source.dto.request.UserRequest;
+import source.dto.request.UserCreateDto;
+import source.dto.request.UserUpdateDto;
 import source.dto.response.PagingResponseDto;
 import source.dto.response.UserResponse;
 import source.entity.User;
@@ -37,8 +37,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponse createUser(UserRequest userRequest) {
-        User user = userMapper.toUser(userRequest);
+    public UserResponse createUser(UserCreateDto userCreateDto) {
+        if (userRepository.existsByUsername(userCreateDto.getUsername())) {
+            throw new BusinessException(ResponseCode.BAD_REQUEST, "Username already exists");
+        }
+        User user = userMapper.toUser(userCreateDto);
         user.setStatus(UserStatusConstant.ACTIVE.getStatus());
         User savedUser = userRepository.save(user);
         return userMapper.toResponse(savedUser);
@@ -46,10 +49,10 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public UserResponse updateUser(Long id, UserRequest userRequest) {
+    public UserResponse updateUser(Long id, UserUpdateDto userUpdateDto) {
         User existingUser = userRepository.findById(id).orElseThrow(() -> new BusinessException(ResponseCode.BAD_REQUEST, "UserId does not exist in the database"));
-        existingUser.setAge(userRequest.getAge());
-        existingUser.setStatus(userRequest.getStatus());
+        existingUser.setAge(userUpdateDto.getAge());
+        existingUser.setStatus(userUpdateDto.getStatus());
         User savedUser = userRepository.save(existingUser);
         return userMapper.toResponse(savedUser);
     }

@@ -1,14 +1,15 @@
 package source.service;
 
-import source.dto.request.UserRequest;
+import source.dto.request.UserCreateDto;
+import source.dto.request.UserUpdateDto;
 import source.dto.response.PagingResponseDto;
 import source.dto.response.UserResponse;
 
 public interface UserService {
 
-    UserResponse createUser(UserRequest userRequest);
+    UserResponse createUser(UserCreateDto userCreateDto);
 
-    UserResponse updateUser(Long id, UserRequest userRequest);
+    UserResponse updateUser(Long id, UserUpdateDto userUpdateDto);
 
     UserResponse getUserById(Long id);
 

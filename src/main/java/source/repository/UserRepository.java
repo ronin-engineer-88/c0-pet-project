@@ -10,4 +10,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT u FROM User u WHERE u.username LIKE CONCAT('%', :searchKey, '%')")
     Page<User> searchUsers(String searchKey, Pageable pageable);
+
+    boolean existsByUsername(String username);
+
 }

@@ -5,7 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import source.constant.AppConstants;
-import source.dto.request.UserRequest;
+import source.dto.request.UserCreateDto;
+import source.dto.request.UserUpdateDto;
 import source.dto.response.PagingResponseDto;
 import source.dto.response.UserResponse;
 import source.service.UserService;
@@ -32,14 +33,14 @@ public class UserController {
 
 
     @PostMapping
-    public ResponseEntity<?> createUser(@Valid @RequestBody UserRequest userRequest) {
-        UserResponse userResponse = userService.createUser(userRequest);
+    public ResponseEntity<?> createUser(@Valid @RequestBody UserCreateDto userCreateDto) {
+        UserResponse userResponse = userService.createUser(userCreateDto);
         return ResponseEntity.ok(userResponse);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable Long id, @Valid @RequestBody UserRequest userRequest) {
-        UserResponse userResponse = userService.updateUser(id, userRequest);
+    public ResponseEntity<?> updateUser(@PathVariable Long id, @Valid @RequestBody UserUpdateDto userUpdateDto) {
+        UserResponse userResponse = userService.updateUser(id, userUpdateDto);
         return ResponseEntity.ok(userResponse);
     }
 
